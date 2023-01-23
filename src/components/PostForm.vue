@@ -8,19 +8,15 @@
 </template>
 
 <script lang="ts">
-
+import { IPostForm, INewPost } from "@/types/index";
 export default {
-
-    data() {
+    data():IPostForm {
         return {
-            newPost: {
-                title: "" as string,
-                body: "" as string
-            }
+            newPost: {title: "", body: ""} as INewPost,
         }
     },
     methods: {
-        addPost() {
+        addPost(): void {
             if ((this as any).newPost.title && (this as any).newPost.body) {
                 const newPost = { id: new Date(), ...(this as any).newPost };
                 (this as any).$emit('addPost', newPost);
@@ -32,7 +28,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .form {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;

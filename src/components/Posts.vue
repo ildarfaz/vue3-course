@@ -6,19 +6,19 @@
 </template>
 
 <script lang="ts">
-import { Post } from "@/components/models/Post"
+import { IPost } from "@/types/index"
 
 export default ({
     props: {
         posts: {
-            type: Object as () => Post[],
+            type: Object as () => IPost[],
             required: true
         },
     },
 });
-</script>
 
-<style scoped>
+</script>
+<style lang="scss" scoped>
 .post {
     padding: 1.5rem;
     border: 2px solid teal;

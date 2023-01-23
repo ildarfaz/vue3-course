@@ -8,25 +8,25 @@
 <script lang="ts">
 import PostForm from "@/components/PostForm.vue";
 import Posts from "@/components/Posts.vue";
-import { Post } from "@/components/models/Post";
+import { IPost, IApp } from "@/types/index";
 export default {
     components: {
         PostForm, Posts
     },
-    data() {
+    data(): IApp {
         return {
-            posts: []
+            posts: [{ id: 0, title: "JavaScript", body: "Test" }]
         }
     },
     methods: {
-        addPost(post: Post) {
+        addPost(post: IPost): void {
             (this as any).posts.push(post);
         }
     }
 };
 </script>
 
-<style>
+<style lang="scss">
 * {
     margin: 0;
     padding: 0;
