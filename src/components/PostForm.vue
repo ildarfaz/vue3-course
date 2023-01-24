@@ -10,9 +10,9 @@
 <script lang="ts">
 import { IPostForm, INewPost } from "@/types/index";
 export default {
-    data():IPostForm {
+    data(): IPostForm {
         return {
-            newPost: {title: "", body: ""} as INewPost,
+            newPost: { title: "", body: "" } as INewPost,
         }
     },
     methods: {
