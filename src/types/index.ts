@@ -12,5 +12,7 @@ export interface IPostForm {
     newPost: INewPost
 }
 export interface IApp {
-    posts: IPost[]
+    posts: IPost[],
+    dialogVisible: boolean,
+    isPostsLoading: boolean
 }

@@ -1,15 +1,16 @@
 <template>
     <form class="form" @submit.prevent>
-        <h4>Создание поста</h4>
-        <input v-model="newPost.title" class="input" type="text" placeholder="Название" />
-        <input v-model="newPost.body" class="input" type="text" placeholder="Описание" />
-        <button class="btn" @click="addPost">Создать</button>
+        <h3>Создание поста</h3>
+        <my-input v-model:value="newPost.title" type="text" placeholder="Название" />
+        <my-input v-model:value="newPost.body" type="text" placeholder="Описание" />
+        <my-button class="mybtn" @click="addPost">Создать</my-button>
     </form>
 </template>
 
 <script lang="ts">
 import { IPostForm, INewPost } from "@/types/index";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
     data(): IPostForm {
         return {
             newPost: { title: "", body: "" } as INewPost,
@@ -18,39 +19,25 @@ export default {
     methods: {
         addPost(): void {
             if ((this as any).newPost.title && (this as any).newPost.body) {
-                const newPost = { id: new Date(), ...(this as any).newPost };
+                const newPost = { id: new Date().getTime(), ...(this as any).newPost };
                 (this as any).$emit('addPost', newPost);
                 (this as any).newPost = { title: "", body: "" };
             }
 
         }
     }
-}
+})
 </script>
 
 <style lang="scss" scoped>
 .form {
     margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
 }
 
-.input {
-    width: 100%;
-    border: 1px solid teal;
-    padding: 1rem 1.5rem;
-    margin-top: 1rem;
-}
-
-.btn {
+.mybtn {
     margin-top: 1.5rem;
-    width: 8rem;
-    height: 3rem;
-    background: none;
-    color: teal;
-    border: 1px solid teal;
     align-self: flex-end;
-    border-radius: 3px;
 }
 </style>
